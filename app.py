@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 
 # Replace this with your actual n8n webhook URL (No Auth)
 INPUT_WEBHOOK_URL = os.getenv("WEBHOOK_URL")  # Sends user message & returns AI response
+BOT_NAME = os.getenv("BOT_NAME", "CHATBOT") 
 
 def generate_session_id():
     """Generate a unique session ID for each user"""
@@ -26,7 +27,7 @@ def send_message_to_n8n(session_id, message):
         return f"❌ Connection Error: {str(e)}"
 
 def main():
-    st.title("Gender Advocate Bot")
+    st.title(f"{BOT_NAME}")
 
     # Initialize session state
     if "messages" not in st.session_state:
